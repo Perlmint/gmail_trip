@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gmail Trip Maker</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+  </head>
+  <body>
+    <div id="app" style="height: 100%"></div>
+    <script>
+        (function() {
+            var count = 2;
+            window.loaded = function loaded() {
+                if (--count === 0) {
+                    init();
+                }
+            }
+        })();
+        function onLoaded() {
+            this.onload = function(){};
+            loaded();
+        }
+    </script>
+    <script async defer src="./index.tsx" onload="onLoaded()">
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="onLoaded()">
+    </script>
+  </body>
+</html>

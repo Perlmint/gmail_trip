@@ -1,0 +1,6 @@
+node_modules
+dist
+.cache
+
+# google api client id
+src/clientId.txt
