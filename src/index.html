@@ -7,23 +7,6 @@
   </head>
   <body>
     <div id="app" style="height: 100%"></div>
-    <script>
-        (function() {
-            var count = 2;
-            window.loaded = function loaded() {
-                if (--count === 0) {
-                    init();
-                }
-            }
-        })();
-        function onLoaded() {
-            this.onload = function(){};
-            loaded();
-        }
-    </script>
-    <script async defer src="./index.tsx" onload="onLoaded()">
-    </script>
-    <script async defer src="https://apis.google.com/js/api.js" onload="onLoaded()">
-    </script>
+    <script src="https://apis.google.com/js/api.js"></script>
   </body>
 </html>

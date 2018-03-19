@@ -1,6 +1,6 @@
 node_modules
 dist
-.cache
+.cache-loader
 
 # google api client id
 src/clientId.txt

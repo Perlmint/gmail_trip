@@ -1,6 +1,4 @@
-/// <reference types="node" />
-import { readFileSync } from "fs";
-const CLIENT_ID = readFileSync(__dirname + "/clientId.txt", "utf8");
+import CLIENT_ID from "./clientId.txt";
 
 export const DISCOVERY_DOCS = [
     "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest",

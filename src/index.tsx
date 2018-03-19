@@ -18,7 +18,7 @@ Promise.config({
     cancellation: true,
 });
 
-(window as any).init = function init() {
+window.addEventListener("load", function init() {
     gapi.load("client:auth2", () => {
         gapi.client.init({
             clientId: CLIENT_ID,
@@ -33,7 +33,8 @@ Promise.config({
             updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         });
     });
-};
+    window.removeEventListener("load", init);
+});
 
 function updateSigninStatus(isSignedIn: boolean) {
     store.dispatch(UserSignIn(isSignedIn));

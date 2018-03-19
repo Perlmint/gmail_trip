@@ -23,9 +23,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "types": [
-      "./local_types/gapi.client",
-      "gapi.client.gmail",
-      "gapi.client.people"
+      "./local_types/gapi.client/index.d.ts",
+      "./local_types/gapi.client.gmail/index.d.ts",
+      "./local_types/gapi.client.people/index.d.ts"
     ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
