@@ -3,7 +3,7 @@ import findIndex from "lodash.findindex";
 import flatten from "lodash.flatten";
 import get from "lodash.get";
 import React from "react";
-import { Grid, Label, Search, Tab } from "semantic-ui-react";
+import { Grid, Header, Label, Search, Tab } from "semantic-ui-react";
 import { updateState } from "../util";
 import { ConnectedSearchMailBox } from "./search";
 
@@ -167,6 +167,7 @@ export class MailEditor extends React.Component<{}, IStates> {
         return <Grid textAlign="left">
             <Grid.Row>
                 <Grid.Column>
+                    <Header size="medium">Receivers</Header>
                     {this.state.receivers.map((receiver, idx) => <Label
                         key={`receiver-${idx}`} image as="a"
                         onClick={this.onReceiverRemove.bind(this, idx)}
