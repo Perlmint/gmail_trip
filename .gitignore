@@ -1,6 +1,11 @@
 node_modules
 dist
 .cache-loader
+.cache
 
 # google api client id
 src/clientId.txt
+
+#data
+src/airlines.csv
+src/airports.csv
