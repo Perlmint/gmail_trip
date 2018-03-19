@@ -2,7 +2,15 @@ import { Query } from "immutability-helper";
 import findIndex from "lodash.findindex";
 import get from "lodash.get";
 import React from "react";
-import { Button, Dimmer, Grid, Header, Input, Loader, Portal, Segment, Table } from "semantic-ui-react";
+import Portal from "semantic-ui-react/dist/commonjs/addons/Portal";
+import Grid from "semantic-ui-react/dist/commonjs/collections/Grid";
+import Table from "semantic-ui-react/dist/commonjs/collections/Table";
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
+import Header from "semantic-ui-react/dist/commonjs/elements/Header";
+import Input from "semantic-ui-react/dist/commonjs/elements/Input";
+import Loader from "semantic-ui-react/dist/commonjs/elements/Loader";
+import Segment from "semantic-ui-react/dist/commonjs/elements/Segment";
+import Dimmer from "semantic-ui-react/dist/commonjs/modules/Dimmer";
 import { connect, Connected } from "../reducer";
 import { updateState } from "../util";
 

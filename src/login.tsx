@@ -1,5 +1,10 @@
 import React from "react";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import Form from "semantic-ui-react/dist/commonjs/collections/Form";
+import Grid from "semantic-ui-react/dist/commonjs/collections/Grid";
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
+import Header from "semantic-ui-react/dist/commonjs/elements/Header";
+import Image from "semantic-ui-react/dist/commonjs/elements/Image";
+import Segment from "semantic-ui-react/dist/commonjs/elements/Segment";
 import { connect, Connected } from "./reducer/index";
 
 interface IProps extends Connected<"auth"> {

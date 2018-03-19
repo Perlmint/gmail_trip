@@ -1,5 +1,8 @@
 import React from "react";
-import { Icon, SemanticICONS, Step, StepGroupProps } from "semantic-ui-react";
+import { SemanticICONS } from "semantic-ui-react/dist/commonjs";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
+import Step from "semantic-ui-react/dist/commonjs/elements/Step";
+import { StepGroupProps } from "semantic-ui-react/dist/commonjs/elements/Step/StepGroup";
 
 export interface IStepsProperties extends Pick<StepGroupProps, "attached"> {
     step: number;

@@ -3,7 +3,10 @@ import flatten from "lodash.flatten";
 import fromPairs from "lodash.frompairs";
 import PropTypes from "prop-types";
 import React from "react";
-import { Form, Grid, Header, Icon } from "semantic-ui-react";
+import Form from "semantic-ui-react/dist/commonjs/collections/Form";
+import Grid from "semantic-ui-react/dist/commonjs/collections/Grid";
+import Header from "semantic-ui-react/dist/commonjs/elements/Header";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 import { IFormDefinition } from "./definition";
 
 export interface IMetadataFormProps {

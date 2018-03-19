@@ -1,6 +1,6 @@
 import update from "immutability-helper";
 import React from "react";
-import { Form } from "semantic-ui-react";
+import Form from "semantic-ui-react/dist/commonjs/collections/Form";
 
 interface IStates {
     subject: string;

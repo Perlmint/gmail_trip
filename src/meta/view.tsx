@@ -1,7 +1,10 @@
 import flatten from "lodash.flatten";
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, Card, Icon, List } from "semantic-ui-react";
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
+import List from "semantic-ui-react/dist/commonjs/elements/List";
+import Card from "semantic-ui-react/dist/commonjs/views/Card";
 import { IFormDefinition } from "./definition";
 
 interface IProps {
