@@ -5,6 +5,7 @@ import get from "lodash.get";
 import React from "react";
 import { Grid, Header, Label, Search, Tab } from "semantic-ui-react";
 import { updateState } from "../util";
+import { MailComposer } from "./compose";
 import { ConnectedSearchMailBox } from "./search";
 
 const panes = [{
@@ -12,6 +13,9 @@ const panes = [{
         content: "Compose",
         icon: "compose",
         key: "compose",
+    },
+    render() {
+        return <MailComposer />;
     },
 }, {
     menuItem: {
