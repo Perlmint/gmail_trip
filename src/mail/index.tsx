@@ -3,7 +3,7 @@ import findIndex from "lodash.findindex";
 import flatten from "lodash.flatten";
 import get from "lodash.get";
 import React from "react";
-import { Grid, Icon, Label, Search, Tab } from "semantic-ui-react";
+import { Grid, Label, Search, Tab } from "semantic-ui-react";
 import { updateState } from "../util";
 import { ConnectedSearchMailBox } from "./search";
 
@@ -25,6 +25,7 @@ const panes = [{
 }];
 
 interface IReceiver {
+    image: string;
     name: string;
     mail: string;
 }
@@ -146,6 +147,7 @@ export class MailEditor extends React.Component<{}, IStates> {
         this.setState((state) => update(state, {
             receivers: {
                 $push: [{
+                    image: data.result.image,
                     mail: data.result.description,
                     name: data.result.title,
                 }],
@@ -156,7 +158,7 @@ export class MailEditor extends React.Component<{}, IStates> {
     private onReceiverRemove(idx: number) {
         this.setState((state) => update(state, {
             receivers: {
-                $splice: [idx, 1],
+                $splice: [[idx, 1]],
             },
         }));
     }
@@ -166,11 +168,14 @@ export class MailEditor extends React.Component<{}, IStates> {
             <Grid.Row>
                 <Grid.Column>
                     {this.state.receivers.map((receiver, idx) => <Label
-                        as="a" key={`receiver-${idx}`}
-                        onRemove={this.onReceiverRemove.bind(this, idx)}
+                        key={`receiver-${idx}`} image as="a"
+                        onClick={this.onReceiverRemove.bind(this, idx)}
                     >
-                        {receiver.name}&lt;{receiver.mail}&gt;
-                        <Icon name="delete" />
+                        <img src={receiver.image} />
+                        {receiver.name}
+                        <Label.Detail>
+                            {receiver.mail}
+                        </Label.Detail>
                     </Label>)}
                     <div style={{display: "inline-block"}}>
                         <Search
