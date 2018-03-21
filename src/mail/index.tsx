@@ -43,6 +43,8 @@ interface IStates {
     contactsFetching: boolean;
     contactsInitialized: boolean;
     receivers: IReceiver[];
+    searchResults: IContact[];
+    searchValue: string;
 }
 
 interface IContact {
@@ -81,6 +83,8 @@ export default class MailEditor extends React.Component<{}, IStates> {
             contactsFetching: false,
             contactsInitialized: false,
             receivers: [],
+            searchResults: [],
+            searchValue: "",
         };
     }
 
@@ -130,9 +134,21 @@ export default class MailEditor extends React.Component<{}, IStates> {
         }
 
         if (resp.result.connections) {
+            const people = flatten(resp.result.connections.map(Contact.fromPerson));
+            const added: IContact[] = [];
+            const changed: Array<[number, number, [IContact]]> = [];
+            for (const person of people) {
+                const idx = findIndex(this.state.contacts, (c) => person.key === c.key);
+                if (idx === -1) {
+                    added.push(person);
+                } else {
+                    changed.push([idx, 1, [person]]);
+                }
+            }
             await updateState(this, {
                 contacts: {
-                    $push: flatten(resp.result.connections.map(Contact.fromPerson)),
+                    $push: added,
+                    $splice: changed,
                 },
             });
         }
@@ -159,6 +175,24 @@ export default class MailEditor extends React.Component<{}, IStates> {
                     mail: data.result.description,
                     name: data.result.title,
                 }],
+            },
+            searchValue: { $set: "" },
+        }));
+    }
+
+    private onReceiverSearch(__: any, data: { value: string; }) {
+        this.setState((state) => update(state, {
+            searchValue: { $set: data.value },
+        }));
+        const searchResult = data.value.length > 0 ? this.state.contacts.filter(
+            (contact) => (
+                contact.description.indexOf(data.value) !== -1 ||
+                contact.title.indexOf(data.value) !== -1
+            ),
+        ) : [];
+        this.setState((state) => update(state, {
+            searchResults: {
+                $set: searchResult,
             },
         }));
     }
@@ -189,8 +223,10 @@ export default class MailEditor extends React.Component<{}, IStates> {
                     <div style={{display: "inline-block"}}>
                         <Search
                             loading={this.state.contactsFetching}
-                            results={this.state.contacts}
+                            results={this.state.searchResults}
+                            value={this.state.searchValue}
                             onResultSelect={this.onReceiverSelected.bind(this)}
+                            onSearchChange={this.onReceiverSearch.bind(this)}
                         />
                     </div>
                 </Grid.Column>
