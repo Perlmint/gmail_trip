@@ -2,7 +2,7 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "baseUrl": "./",
-        "module": "es2015",
+        "module": "esnext",
         "moduleResolution": "node",
         "lib": [
             "dom",
@@ -17,10 +17,13 @@
         "noEmit": false,
         "allowJs": false,
         "checkJs": false,
+        "typeRoots": [
+            "../local_types"
+        ],
         "types": [
-            "../local_types/gapi.client/index.d.ts",
-            "../local_types/gapi.client.gmail/index.d.ts",
-            "../local_types/gapi.client.people/index.d.ts"
+            "gapi.client",
+            "gapi.client.gmail",
+            "gapi.client.people"
         ]
     }
 }
