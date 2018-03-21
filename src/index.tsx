@@ -11,6 +11,7 @@ import Segment from "semantic-ui-react/dist/commonjs/elements/Segment";
 import Dimmer from "semantic-ui-react/dist/commonjs/modules/Dimmer";
 import { CLIENT_ID, DISCOVERY_DOCS, SCOPES } from "./const";
 import { ConnectedLoginForm } from "./login";
+import { packageToLDJson } from "./meta/ld_json";
 import { IMetaData } from "./meta/type";
 import { connect, Connected } from "./reducer";
 import { Ready, UserSignIn } from "./reducer/auth";
@@ -100,11 +101,13 @@ class Index extends React.Component<IProps, IStates> {
     }
 
     public static childContextTypes = {
+        getMetaData: PropTypes.func,
         setMetaData: PropTypes.func,
     };
 
     public getChildContext() {
         return {
+            getMetaData: this.getMetaData.bind(this),
             setMetaData: this.setMetaData.bind(this),
         };
     }
@@ -118,6 +121,10 @@ class Index extends React.Component<IProps, IStates> {
                 $set: 1,
             },
         }));
+    }
+
+    protected getMetaData() {
+        return packageToLDJson(this.state.metadata.map((m) => m.data));
     }
 
     protected renderLoading() {
