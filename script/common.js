@@ -87,7 +87,9 @@ function csvParse(data) {
  */
 function csvStringify(data) {
     return new Promise((resolve, reject) => {
-        stringify(data, (err, out) => {
+        stringify(data, {
+            header: true,
+        }, (err, out) => {
             if (err) {
                 reject(err);
             } else {
