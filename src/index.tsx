@@ -3,6 +3,7 @@ import update from "immutability-helper";
 import PropTypes from "prop-types";
 import React, { ReactElement } from "react";
 import ReactDOM from "react-dom";
+import Loadable from "react-loadable";
 import { Provider } from "react-redux";
 import Grid from "semantic-ui-react/dist/commonjs/collections/Grid";
 import Loader from "semantic-ui-react/dist/commonjs/elements/Loader";
@@ -10,8 +11,7 @@ import Segment from "semantic-ui-react/dist/commonjs/elements/Segment";
 import Dimmer from "semantic-ui-react/dist/commonjs/modules/Dimmer";
 import { CLIENT_ID, DISCOVERY_DOCS, SCOPES } from "./const";
 import { ConnectedLoginForm } from "./login";
-import { MailEditor } from "./mail";
-import { IMetaData, MetadataEditor } from "./meta";
+import { IMetaData } from "./meta/type";
 import { connect, Connected } from "./reducer";
 import { Ready, UserSignIn } from "./reducer/auth";
 import { IStepInfo, Steps } from "./steps";
@@ -47,15 +47,33 @@ interface IStepRenderInfo extends IStepInfo {
     render(): ReactElement<any>;
 }
 
+const MetaEditorLoadable = Loadable({
+    loader() {
+        return import("./meta");
+    },
+    loading() {
+        return <Loader />;
+    },
+});
+
+const MailEditorLoadable = Loadable({
+    loader() {
+        return import("./mail");
+    },
+    loading() {
+        return <Loader />;
+    },
+});
+
 const steps: IStepRenderInfo[] = [{
     description: "Fill reservation info",
     icon: "edit",
-    render() { return <MetadataEditor />; },
+    render() { return <MetaEditorLoadable />; },
     title: "Fill info",
 }, {
     description: "Write mail contents manually or select mail to forward",
     icon: "mail outline",
-    render() { return <MailEditor />; },
+    render() { return <MailEditorLoadable />; },
     title: "Mail contents",
 }, {
     icon: "send",

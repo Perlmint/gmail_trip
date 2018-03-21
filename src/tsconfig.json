@@ -1,0 +1,26 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "lib": [
+            "dom",
+            "es2017.object",
+            "es2015.promise",
+            "es5",
+            "es2015"
+        ],
+        "jsx": "react",
+        "declaration": false,
+        "sourceMap": true,
+        "noEmit": false,
+        "allowJs": false,
+        "checkJs": false,
+        "types": [
+            "../local_types/gapi.client/index.d.ts",
+            "../local_types/gapi.client.gmail/index.d.ts",
+            "../local_types/gapi.client.people/index.d.ts"
+        ]
+    }
+}

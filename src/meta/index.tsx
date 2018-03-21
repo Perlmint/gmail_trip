@@ -9,14 +9,10 @@ import Divider from "semantic-ui-react/dist/commonjs/elements/Divider";
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 import Tab from "semantic-ui-react/dist/commonjs/modules/Tab";
 import Card from "semantic-ui-react/dist/commonjs/views/Card";
-import { FlightDefinition, HotelDefinition, IFormDefinition } from "./definition";
+import { FlightDefinition, HotelDefinition } from "./definition";
 import { MetadataForm } from "./form";
+import { IFormDefinition, IMetaData } from "./type";
 import { MetadataView } from "./view";
-
-export interface IMetaData {
-    definition: IFormDefinition;
-    data: any;
-}
 
 interface IStates {
     metaData: IMetaData[];
@@ -46,7 +42,7 @@ function tabFromDefinition(definition: IFormDefinition): ITab {
 
 const tabs: ITab[] = [FlightDefinition, HotelDefinition].map(tabFromDefinition);
 
-export class MetadataEditor extends React.Component<{}, IStates> {
+export default class MetadataEditor extends React.Component<{}, IStates> {
     constructor(props: {}, context: any) {
         super(props, context);
 
@@ -127,3 +123,5 @@ export class MetadataEditor extends React.Component<{}, IStates> {
         </Grid>;
     }
 }
+
+export { MetadataEditor };

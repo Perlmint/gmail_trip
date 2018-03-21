@@ -1,5 +1,6 @@
 import htmlWebpackPlugin from "html-webpack-plugin";
 import { join } from "path";
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import webpack from "webpack";
 
 const config: webpack.Configuration = {
@@ -22,7 +23,7 @@ const config: webpack.Configuration = {
         ],
     },
     output: {
-        filename: "[hash].js",
+        filename: "[chunkhash].js",
         path: join(__dirname, "dist"),
     },
     plugins: [
@@ -36,6 +37,11 @@ const config: webpack.Configuration = {
             ".tsx",
             ".js",
             ".json",
+        ],
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: "./src/tsconfig.json",
+            }),
         ],
     },
     target: "web",

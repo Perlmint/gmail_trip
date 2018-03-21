@@ -67,7 +67,7 @@ namespace Contact {
     }
 }
 
-export class MailEditor extends React.Component<{}, IStates> {
+export default class MailEditor extends React.Component<{}, IStates> {
     private static getCacheKey() {
         const userId = gapi.auth2.getAuthInstance().currentUser.get().getId();
         return `cached-contacts-${userId}`;

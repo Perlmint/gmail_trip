@@ -1,17 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "lib": [
-      "dom",
-      "es2015.promise",
-      "es2017.object",
-      "es5",
-      "es2015.core"
-    ],
+    "moduleResolution": "node",
     "jsx": "react",
-    "declaration": false,
-    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -22,12 +16,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "types": [
-      "./local_types/gapi.client/index.d.ts",
-      "./local_types/gapi.client.gmail/index.d.ts",
-      "./local_types/gapi.client.people/index.d.ts"
-    ],
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   }
 }

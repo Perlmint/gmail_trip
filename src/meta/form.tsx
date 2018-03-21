@@ -7,7 +7,7 @@ import Form from "semantic-ui-react/dist/commonjs/collections/Form";
 import Grid from "semantic-ui-react/dist/commonjs/collections/Grid";
 import Header from "semantic-ui-react/dist/commonjs/elements/Header";
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
-import { IFormDefinition } from "./definition";
+import { IFormDefinition } from "./type";
 
 export interface IMetadataFormProps {
     definition: IFormDefinition;
@@ -87,5 +87,3 @@ export class MetadataForm extends React.Component<IMetadataFormProps, IStates> {
         </Grid>;
     }
 }
-
-export { IFormDefinition };
