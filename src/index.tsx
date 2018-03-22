@@ -123,8 +123,11 @@ class Index extends React.Component<IProps, IStates> {
         }));
     }
 
-    protected getMetaData() {
-        return packageToLDJson(this.state.metadata.map((m) => m.data));
+    protected async getMetaData() {
+        return packageToLDJson(
+            this.state.metadata.map((m) => m.data),
+            gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()
+        );
     }
 
     protected renderLoading() {

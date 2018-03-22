@@ -272,7 +272,7 @@ export default class MailEditor extends React.Component<{}, IStates> {
                 "<html><body>",
                 this.state.contents,
                 "<script type=\"application/ld+json\">",
-                JSON.stringify(this.context.getMetaData()),
+                JSON.stringify(await this.context.getMetaData()),
                 "</script></body></html>",
             ].join("")),
             `--${boundary}--`,

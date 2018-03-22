@@ -1,6 +1,2 @@
-declare const value: {
-    name: string;
-    code: string;
-    timezone: string;
-}[];
-export = value;
+declare const value: Airport.Data[];
+export default value;

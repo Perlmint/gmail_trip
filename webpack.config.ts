@@ -20,6 +20,17 @@ const config: webpack.Configuration = {
                     "ts-loader",
                 ],
             },
+            {
+                test: /\.csv$/,
+                use: [{
+                    loader: "csv-loader",
+                    options: {
+                        dynamicTyping: true,
+                        header: true,
+                        skipEmptyLines: true,
+                    },
+                }],
+            },
         ],
     },
     output: {

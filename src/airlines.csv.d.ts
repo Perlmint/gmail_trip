@@ -1,5 +1,2 @@
-declare const value: {
-    name: string;
-    code: string;
-}[];
-export = value;
+declare const value: Airline.Data[];
+export default value;
